@@ -31,3 +31,8 @@
 # Debug files
 *.dSYM/
 *.su
+
+# VS files
+*.VC.db
+*.VC.opendb
+*.suo
