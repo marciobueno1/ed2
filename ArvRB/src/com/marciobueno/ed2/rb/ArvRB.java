@@ -3,7 +3,7 @@ package com.marciobueno.ed2.rb;
 import java.util.ArrayDeque;
 
 public class ArvRB {
-    NodeRB raiz;
+    private NodeRB raiz;
 
     public ArvRB() {
         raiz = null;
@@ -53,7 +53,6 @@ public class ArvRB {
     }
     
     private NodeRB rotacaoEsq(NodeRB a) {
-        boolean aux;
         NodeRB p = a.getDir();
         a.setDir(p.getEsq());
         p.setEsq(a);
@@ -62,7 +61,6 @@ public class ArvRB {
     }
 
     private NodeRB rotacaoDir(NodeRB a) {
-        boolean aux;
         NodeRB p = a.getEsq();
         a.setEsq(p.getDir());
         p.setDir(a);
@@ -72,20 +70,20 @@ public class ArvRB {
     
     public void passeioNivel() {
         ArrayDeque<NodeRB> fila = new ArrayDeque<NodeRB>();
-        NodeRB elem, nula = new NodeRB(0);
+        NodeRB elem, flag = new NodeRB(0);
         int nivel = 0;
         System.out.print(nivel + ": ");
         if (this.raiz != null) {
             fila.add(this.raiz);
-            fila.add(nula);
+            fila.add(flag);
             while (!fila.isEmpty()) {
                 elem = fila.remove();
-                if (elem == nula) {
+                if (elem == flag) {
                     ++nivel;
                     System.out.println();
                     System.out.print(nivel + ": ");
                     if (!fila.isEmpty()) {
-                        fila.add(nula);
+                        fila.add(flag);
                     }
                 } else {
                     if (elem.getEsq() != null) {
